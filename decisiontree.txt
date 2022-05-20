@@ -1,0 +1,36 @@
+import numpy as np
+import pandas as pd
+
+dataset=pd.read_excel('cosmetic.xlsx')
+
+dataset.head()
+
+X=dataset.iloc[:,:-1]
+print(X)
+
+y=dataset.iloc[:,4]
+
+print(y)
+
+#perform label encoding
+from sklearn.preprocessing import LabelEncoder
+
+le=LabelEncoder()
+
+X=X.apply(le.fit_transform)
+
+print(X)
+
+from sklearn.tree import DecisionTreeClassifier
+
+regressor=DecisionTreeClassifier()
+
+regressor.fit(X,y)
+
+#predict the value
+
+X_in=np.array([1,1,0,1])
+
+y_pred=regressor.predict([X_in])
+
+print(y_pred)

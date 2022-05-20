@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int p,g;
+   cout<<"Enter value of p: ";
+   cin>>p;
+   cout<<"Enter primitive root: ";
+   cin>>g;
+   cout<<"Enter 1st secrect number of A: ";
+   int a;
+   cin>>a;
+   cout<<"Enter 1st secrect number of b: ";
+   int b;
+   cin>>b;
+   
+   int temp1=pow(g,a);
+   int A=temp1%p;
+   
+   int temp2=pow(g,b);
+   int B=temp2%p;
+   
+   cout<<"public key A: "<<A<<endl;
+   cout<<"public key B: "<<B<<endl;
+   
+   int temp3=pow(B,a);
+   int S_A=temp3%p;
+   
+   int temp4=pow(A,b);
+   int S_B=temp4%p;
+   
+   cout<<"Secret key for A:"<<S_A<<endl;
+   cout<<"Secret key for B:"<<S_B<<endl;
+   return 0;
+    
+}

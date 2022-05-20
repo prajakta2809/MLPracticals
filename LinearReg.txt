@@ -1,0 +1,64 @@
+# Linear Regression : Assignment 1
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+%matplotlib inline
+
+hours=pd.read_csv('hours.csv')
+
+#Displaying head of data
+hours.head()
+
+#Displaying description of data
+hours.describe()
+
+#Displaying basic information
+hours.info()
+
+sns.jointplot(data=hours,x='No. of hours',y='Risk score')
+
+#Display columns of data
+hours.columns
+
+# y is the values we want to predict
+y=hours.iloc[:,1]
+# x is the parameters
+X=hours.iloc[:,:-1]
+
+print(y)
+
+from sklearn.linear_model import LinearRegression
+
+lm=LinearRegression()
+
+lm.fit(X,y)
+
+accuracy=lm.score(X,y)*100
+
+print(accuracy)
+
+# predict value
+y_pred=lm.predict([[10]])
+
+print(y_pred)
+
+user_input=int(input("Enter the number of hours "))
+
+print(user_input)
+
+#calculate y
+eq='%f%f%f'%(lm.coef_,user_input,lm.intercept_)
+
+print(y)
+
+print(eq[0])
+
+plt.plot(X,lm.predict(X));
+
+plt.show()
+
+
+
